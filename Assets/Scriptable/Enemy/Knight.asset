@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2793a0206c1fc488c82605c81d4100, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  type: 3
+  attackDamage: 50
+  health: 400
+  speed: 1.3
+  knockTime: 0.2
+  knockRes: 10
+  knockPower: 20
+  experience: 100
+  dropItem: {fileID: 1478888338984204592, guid: d0e1732e873278a4794070b9bdd980ac,
+    type: 3}
+  dropRate: 0.06

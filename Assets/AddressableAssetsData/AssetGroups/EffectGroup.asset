@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: EffectGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: EffectGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b70430d004c4a1646845ab0af170ed29
+  m_SerializeEntries:
+  - m_GUID: 2b3a0f155199bf840b43adddee9f2a02
+    m_Address: Assets/Prefabs/SpiritDeathEffect.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ab363b486bb44e428020fedaf7e33fb
+    m_Address: Assets/Prefabs/DeathEffect.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51b73470a632afc47abd8a59940d0f4a
+    m_Address: Assets/Prefabs/ProjectileImpactEffect.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4b6285e07576a0448ab19bb7544e879d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f46deb47cd094bf47ac273378df853f2, type: 2}
+    - {fileID: 11400000, guid: 01f80080bb202c1468a50cd07db8dbd5, type: 2}

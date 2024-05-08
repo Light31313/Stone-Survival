@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a0039b94b064724429cdefb16820ae58
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blueprint: {instanceID: 0}
+  - centerPoint: {instanceID: 0}
+  - playerStat: {instanceID: 0}
+  - damageTakenPrefab: {fileID: 4587567896326912034, guid: 0f58baf7c4c12d64f81b926fb80ff26c,
+      type: 3}
+  - dieEffectPrefab: {fileID: -6479594173590601732, guid: 7ab363b486bb44e428020fedaf7e33fb,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

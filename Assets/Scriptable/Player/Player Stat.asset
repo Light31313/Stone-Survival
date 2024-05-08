@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3636422d969318242b76e03355c9eef4, type: 3}
+  m_Name: Player Stat
+  m_EditorClassIdentifier: 
+  level: 53
+  currentExp: 67108
+  health: 200
+  currentHealth: 295
+  speed: 3
+  invicibleTime: 1
+  knockedTime: 0.3
+  knockRes: 2
+  fireRate: 2
+  damage: 0
+  pierceEnemy: 1
+  knockPower: 2
+  rotateBullet: 0
+  numberOfBullet: 1
+  auraLevel: 0
+  upgradedHealth: 330
+  upgradedSpeed: 1.8
+  upgradedInvicibleTime: 0
+  upgradedKnockedTime: 0
+  upgradedKnockRes: 0
+  upgradedFireRate: 1.8000002
+  upgradedDamage: 65
+  upgradedKnockPower: 0
+  upgradedPierceEnemy: 5
+  upgradedRotateBullet: 2
+  upgradedNumberOfBullet: 3
+  upgradedAuraLevel: 2
+  isBulletChaseTarget: 1

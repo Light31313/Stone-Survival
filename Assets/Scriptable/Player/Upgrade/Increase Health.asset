@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0794931dac3d5bb4a93a9fcafb67265f, type: 3}
+  m_Name: Increase Health
+  m_EditorClassIdentifier: 
+  upgradeName: Strong
+  sprite: {fileID: 21300000, guid: 93078ff18a06bf747a7e22049b702fb3, type: 3}
+  description: Increase Health
+  upgradeStat:
+    speed: 0
+    health: 30
+    invicibleTime: 0
+    knockedTime: 0
+    knockRes: 0
+    fireRate: 0
+    damage: 0
+    piercing: 0
+    knockPower: 0
+    rotateBullet: 0
+    numberOfBullet: 0
+    auraLevel: 0
+    isBulletChaseTarget: 0

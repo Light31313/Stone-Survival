@@ -1,0 +1,4 @@
+repository "Clone Survival@GgAccel@cloud"
+  path "/"
+    br "/main"
+    co "/main"
