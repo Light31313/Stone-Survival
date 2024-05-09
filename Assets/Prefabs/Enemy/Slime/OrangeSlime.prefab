@@ -33,7 +33,6 @@ RectTransform:
   m_Children:
   - {fileID: 1505004445923304196}
   m_Father: {fileID: 6834674604471656489}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -57,7 +56,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1869315837
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -132,7 +133,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1505004445923304196}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -210,7 +210,6 @@ RectTransform:
   m_Children:
   - {fileID: 1505004445690582990}
   m_Father: {fileID: 1505004444628274968}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -315,6 +314,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 1505004445690582976}
@@ -341,13 +341,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505004445989391185}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.009, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6834674604471656489}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6834674604471656492
 GameObject:
@@ -359,10 +359,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6834674604471656489}
   - component: {fileID: 6834674604471656494}
-  - component: {fileID: 6834674604471656495}
   - component: {fileID: 6834674604471656488}
   - component: {fileID: 6834674604471656490}
   - component: {fileID: 6834674604471656491}
+  - component: {fileID: -990864826049182413}
   m_Layer: 8
   m_Name: OrangeSlime
   m_TagString: Enemy
@@ -377,6 +377,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6834674604471656492}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.17, y: -2.861, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -385,7 +386,6 @@ Transform:
   - {fileID: 1505004444628274968}
   - {fileID: 1505004445989391184}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6834674604471656494
 SpriteRenderer:
@@ -439,26 +439,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &6834674604471656495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6834674604471656492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c844b1fda27df6245b3971b99cb18396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blueprint: {fileID: 11400000, guid: 91006476c1f173c48af95b6883cf6543, type: 2}
-  centerPoint: {fileID: 1505004445989391184}
-  state: 0
-  playerStat: {fileID: 11400000, guid: 4552797529dfb5148b37283f0201778f, type: 2}
-  damageTakenPrefab: {fileID: 4587567896326912034, guid: 0f58baf7c4c12d64f81b926fb80ff26c,
-    type: 3}
-  dieEffectPrefab: {fileID: -6479594173590601732, guid: 7ab363b486bb44e428020fedaf7e33fb,
-    type: 3}
 --- !u!95 &6834674604471656488
 Animator:
   serializedVersion: 5
@@ -479,6 +459,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &6834674604471656490
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -489,6 +470,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -512,7 +512,33 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-990864826049182413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834674604471656492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9597bb26f88a4d5ebb53367e22d81ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueprint: {fileID: 11400000, guid: 91006476c1f173c48af95b6883cf6543, type: 2}
+  centerPoint: {fileID: 1505004445989391184}
+  state: 0
+  playerStat: {fileID: 11400000, guid: 4552797529dfb5148b37283f0201778f, type: 2}
+  damageTakenPrefab: {fileID: 4587567896326912034, guid: 0f58baf7c4c12d64f81b926fb80ff26c,
+    type: 3}
+  dieEffectPrefab: {fileID: -6479594173590601732, guid: 7ab363b486bb44e428020fedaf7e33fb,
+    type: 3}

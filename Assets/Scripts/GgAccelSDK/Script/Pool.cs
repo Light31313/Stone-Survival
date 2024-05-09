@@ -8,7 +8,7 @@ namespace GgAccel
     public class Pool : MonoSingleton<Pool>
     {
         public const string TAG = "Pool";
-        private Dictionary<string, IObjectPool<MonoBehaviour>> _poolDictionary = new();
+        private readonly Dictionary<string, IObjectPool<MonoBehaviour>> _poolDictionary = new();
 
         private MonoBehaviour CreateObject(MonoBehaviour prefab, Transform parent)
         {
@@ -36,11 +36,11 @@ namespace GgAccel
             Instance._poolDictionary[item.GetType().Name].Release(item);
         }
 
+        // Store Pool in dictionary with key is MonoBehavior script name
         public static T Get<T>(T prefab, Transform parent = null) where T : MonoBehaviour
         {
-            if (!Instance._poolDictionary.ContainsKey(prefab.name))
+            if (!Instance._poolDictionary.ContainsKey(prefab.GetType().Name))
             {
-                Debug.Log(prefab.name);
                 Instance._poolDictionary[prefab.GetType().Name] = new ObjectPool<MonoBehaviour>(
                     () => Instance.CreateObject(prefab, parent), Instance.OnGetObject,
                     Instance.OnReleaseObject,

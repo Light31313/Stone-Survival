@@ -1,7 +1,9 @@
+using System;
 using GgAccel;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
@@ -46,6 +48,11 @@ public class Enemy : MonoBehaviour
     public void initDieAction(UnityAction onDie)
     {
         onEnemyDie = onDie;
+    }
+
+    private void OnValidate()
+    {
+        centerPoint = transform.Find("CenterPoint");
     }
 
     private void OnEnable()

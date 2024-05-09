@@ -19,20 +19,20 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        playerStat.ResetStat();
+        playerStat.HackPlayerStat();
     }
 
     private void OnEnable()
     {
-        playerStat.onGetExperience += exp => OnGetExperience(exp);
-        playerStat.onLevelUp += level => OnLevelUp(level);
+        playerStat.onGetExperience += OnGetExperience;
+        playerStat.onLevelUp += OnLevelUp;
         playerStat.onDie += OnDie;
     }
 
     private void OnDisable()
     {
-        playerStat.onGetExperience -= exp => OnGetExperience(exp);
-        playerStat.onLevelUp -= level => OnLevelUp(level);
+        playerStat.onGetExperience -= OnGetExperience;
+        playerStat.onLevelUp -= OnLevelUp;
         playerStat.onDie -= OnDie;
     }
 

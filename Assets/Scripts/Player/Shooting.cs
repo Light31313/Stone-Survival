@@ -74,6 +74,10 @@ public class Shooting : MonoBehaviour
                 Launch(-firePoint.up);
                 Launch(firePoint.right);
                 Launch(-firePoint.right);
+                Launch(new Vector3(1, 1));
+                Launch(new Vector3(-1, 1));
+                Launch(new Vector3(1, -1));
+                Launch(new Vector3(-1, -1));
                 break;
             default:
                 break;

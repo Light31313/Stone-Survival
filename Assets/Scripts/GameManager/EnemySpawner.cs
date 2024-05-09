@@ -89,10 +89,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemyFromPool(EnemyType type, Vector3 position)
     {
         var enemyPrefab = enemyPrefabs.Find(enemy => enemy.Type == type);
-        Debug.Log($"Spawn enemy from pool: {enemyPrefab.Type}");
         var enemy = Pool.Get(enemyPrefab);
 
-        Debug.Log($"Get from prefab: {enemy.Type}");
         activeEnemies.Add(enemy);
         enemy.initDieAction(() =>
         {

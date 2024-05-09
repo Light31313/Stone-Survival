@@ -11,20 +11,18 @@ public class PlayerStat : ScriptableObject
     public event UnityAction<int> onChangeRotateBullet;
     public event UnityAction<int> onChangeAuraLevel;
 
-    [SerializeField]
-    private int level = 1;
+    [SerializeField] private int level = 1;
+
     public int Level
     {
-        get
-        {
-            return level;
-        }
+        get { return level; }
         set
         {
             level = value;
             onLevelUp?.Invoke(level);
         }
     }
+
     public int ExpToNextLevel
     {
         get
@@ -51,53 +49,49 @@ public class PlayerStat : ScriptableObject
             }
         }
     }
-    [SerializeField]
-    private int currentExp;
+
+    [SerializeField] private int currentExp;
+
     public int CurrentExp
     {
-        get
-        {
-            return currentExp;
-        }
+        get { return currentExp; }
         set
         {
             currentExp = value;
             onGetExperience?.Invoke((float)currentExp / ExpToNextLevel);
         }
     }
-    [SerializeField]
-    private float health;
+
+    [SerializeField] private float health;
+
     public float Health
     {
-        get
-        {
-            return health;
-        }
+        get { return health; }
         set
         {
             health = value;
             InvokeOnChangeHealth();
         }
     }
-    [SerializeField]
-    private float currentHealth;
+
+    [SerializeField] private float currentHealth;
+
     public float CurrentHealth
     {
-        get
-        {
-            return currentHealth;
-        }
+        get { return currentHealth; }
         set
         {
-            if(value > TotalHealth)
+            if (value > TotalHealth)
             {
                 currentHealth = TotalHealth;
-            } else
+            }
+            else
             {
                 currentHealth = value;
             }
+
             InvokeOnChangeHealth();
-            if(value <= 0)
+            if (value <= 0)
             {
                 onDie?.Invoke();
             }
@@ -113,26 +107,24 @@ public class PlayerStat : ScriptableObject
     [SerializeField] private int pierceEnemy;
     [SerializeField] private float knockPower;
     [SerializeField] private int rotateBullet;
-    [SerializeField] private int RotateBullet
+
+    [SerializeField]
+    private int RotateBullet
     {
-        get
-        {
-            return rotateBullet;
-        }
+        get { return rotateBullet; }
         set
         {
             rotateBullet = value;
             onChangeRotateBullet?.Invoke(TotalRotateBullet);
         }
     }
+
     [SerializeField] private int numberOfBullet;
     [SerializeField] private int auraLevel;
+
     private int Aura
     {
-        get
-        {
-            return auraLevel;
-        }
+        get { return auraLevel; }
         set
         {
             auraLevel = value;
@@ -140,20 +132,18 @@ public class PlayerStat : ScriptableObject
         }
     }
 
-    [SerializeField]
-    private float upgradedHealth;
+    [SerializeField] private float upgradedHealth;
+
     public float UpgradedHealth
     {
-        get
-        {
-            return upgradedHealth;
-        }
+        get { return upgradedHealth; }
         set
         {
             upgradedHealth = value;
             InvokeOnChangeHealth();
         }
     }
+
     [SerializeField] private float upgradedSpeed;
     [SerializeField] private float upgradedInvicibleTime;
     [SerializeField] private float upgradedKnockedTime;
@@ -163,26 +153,23 @@ public class PlayerStat : ScriptableObject
     [SerializeField] private float upgradedKnockPower;
     [SerializeField] private int upgradedPierceEnemy;
     [SerializeField] private int upgradedRotateBullet;
+
     private int UpgradedRotateBullet
     {
-        get
-        {
-            return upgradedRotateBullet;
-        }
+        get { return upgradedRotateBullet; }
         set
         {
             upgradedRotateBullet = value;
             onChangeRotateBullet?.Invoke(TotalRotateBullet);
         }
     }
+
     [SerializeField] private int upgradedNumberOfBullet;
     [SerializeField] private int upgradedAuraLevel;
+
     private int UpgradedAura
     {
-        get
-        {
-            return upgradedAuraLevel;
-        }
+        get { return upgradedAuraLevel; }
         set
         {
             upgradedAuraLevel = value;
@@ -208,7 +195,6 @@ public class PlayerStat : ScriptableObject
 
     public void ResetStat()
     {
-
         speed = 3;
         health = 100;
         invicibleTime = 1f;
@@ -241,6 +227,25 @@ public class PlayerStat : ScriptableObject
         currentHealth = TotalHealth;
     }
 
+    public void HackPlayerStat()
+    {
+        speed = 5;
+        health = 1000;
+        invicibleTime = 1f;
+        knockedTime = 0.3f;
+        knockRes = 2f;
+        fireRate = 10f;
+        damage = 100;
+        level = 100;
+        currentExp = 0;
+        knockPower = 2;
+        pierceEnemy = 1;
+        rotateBullet = 0;
+        numberOfBullet = 4;
+        auraLevel = 0;
+        currentHealth = TotalHealth;
+    }
+
     public void UpdateStatOnLevelUp()
     {
         CurrentExp -= ExpToNextLevel;
@@ -262,7 +267,7 @@ public class PlayerStat : ScriptableObject
         UpgradedRotateBullet += upgrade.RotateBullet;
         upgradedNumberOfBullet += upgrade.NumberOfBullet;
         UpgradedAura += upgrade.AuraLevel;
-        if(!isBulletChaseTarget)
+        if (!isBulletChaseTarget)
         {
             isBulletChaseTarget = upgrade.IsBulletChaseTarget;
         }
