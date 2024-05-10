@@ -53,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!playerPosition) return; 
         foreach (var enemy in activeEnemies)
         {
             enemy.ChaseTarget(playerPosition);

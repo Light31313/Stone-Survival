@@ -1,6 +1,9 @@
 using System;
 using GgAccel;
 using System.Threading.Tasks;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -34,7 +37,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private DamageTaken damageTakenPrefab;
     [SerializeField] private Effect dieEffectPrefab;
-
+    private NativeArray<float3> _newMovePos;
+    private Transform _cacheTransform;
+    private JobHandle _movingJobHandle;
+    private MovingEnemyJob _movingJob;
+    private bool _isInit;
     public event UnityAction<float> changeHealthBarAction;
 
     private UnityAction onEnemyDie;
@@ -43,6 +50,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         enemy = GetComponent<Rigidbody2D>();
+        _cacheTransform = transform;
     }
 
     public void initDieAction(UnityAction onDie)
@@ -57,6 +65,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
+        _newMovePos = new NativeArray<float3>(1, Allocator.Persistent);
         currentHealth = blueprint.health;
         attackDamage = blueprint.attackDamage;
         speed = blueprint.speed;
@@ -67,22 +76,47 @@ public class Enemy : MonoBehaviour
         state = EnemyState.NORMAL;
     }
 
+    private void OnDisable()
+    {
+        _isInit = false;
+        _movingJobHandle.Complete();
+        if (_newMovePos.IsCreated) _newMovePos.Dispose();
+    }
+
     public void ChaseTarget(Transform target)
     {
-        if (target == null) return;
         if (state == EnemyState.IS_KNOCKED) return;
-
-        Vector2 dir = transform.GetDirection(target.position);
-        if (dir.x > 0)
+        if (!_isInit)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            _isInit = true;
         }
         else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            _movingJobHandle.Complete();
+            enemy.MovePosition((Vector3)_movingJob.newMovePos[0]);
         }
 
-        enemy.MovePosition(enemy.position + Time.deltaTime * speed * dir);
+        float3 dir = _cacheTransform.GetDirection(target.position);
+        if (dir.x > 0)
+        {
+            _cacheTransform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            _cacheTransform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (!_newMovePos.IsCreated) _newMovePos = new NativeArray<float3>(1, Allocator.Persistent);
+
+        _movingJob = new MovingEnemyJob
+        {
+            speed = speed,
+            currentPos = _cacheTransform.position,
+            deltaTime = Time.fixedDeltaTime,
+            moveDir = dir,
+            newMovePos = _newMovePos
+        };
+        _movingJobHandle = _movingJob.Schedule();
     }
 
     public virtual async void TakeDamage(float damage, float knockPower, Vector3 bulletPosition)
